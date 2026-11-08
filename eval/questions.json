@@ -1,0 +1,22 @@
+[
+  {"question": "How do I hide the text a user types when entering a password option?", "source": "typer/options/password.md"},
+  {"question": "How can a CLI argument read its value from an environment variable?", "source": "typer/arguments/envvar.md"},
+  {"question": "How do I use the closest valid number instead of showing an error when a value is out of range?", "source": "typer/parameter-types/number.md"},
+  {"question": "How do I make a --verbose option count how many times it was passed?", "source": "typer/parameter-types/number.md"},
+  {"question": "How do I stop a command early and return a non-zero exit code?", "source": "typer/terminating.md"},
+  {"question": "How do I open the file browser at the location of a config file?", "source": "typer/launch.md"},
+  {"question": "How do I write pytest tests for a Typer app using CliRunner?", "source": "typer/testing.md"},
+  {"question": "How do I add a --version option that is processed before other parameters?", "source": "typer/options/version.md"},
+  {"question": "How do I attach a group of subcommands to my app with add_typer?", "source": "typer/subcommands/add-typer.md"},
+  {"question": "How do I give an option a short name like -n?", "source": "typer/options/name.md"},
+  {"question": "How do I make a CLI option required?", "source": "typer/options/required.md"},
+  {"question": "How can I restrict a parameter to a fixed set of choices using an Enum?", "source": "typer/parameter-types/enum.md"},
+  {"question": "How do I show a progress bar for a long loop?", "source": "typer/progressbar.md"},
+  {"question": "How do I ask the user for confirmation before running a command?", "source": "typer/prompt.md"},
+  {"question": "From which branch are Acme CLI releases cut?", "source": "notes/release-process.md"},
+  {"question": "Who has to approve a hotfix?", "source": "notes/release-process.md"},
+  {"question": "How long does one on-call shift last and when does it start?", "source": "notes/on-call.md"},
+  {"question": "Within how many minutes must a Severity 1 incident be acknowledged?", "source": "notes/on-call.md"},
+  {"question": "What is the maximum line length in our code style guide?", "source": "notes/code-style.md"},
+  {"question": "Which Python version do the internal services pin?", "source": "notes/code-style.md"}
+]
