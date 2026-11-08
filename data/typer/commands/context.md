@@ -1,0 +1,49 @@
+# Using the Context
+
+When you create a **Typer** application it always has a special, hidden object underneath called the "Context".
+
+But you can access the context by declaring a function parameter of type `typer.Context`.
+
+You might have read it in [CLI Option Callback and Context](../options/callback-and-context.md).
+
+The same way, in commands or in the main `Typer` callback you can access the context by declaring a function parameter of type `typer.Context`.
+
+## Getting the context
+
+For example, let's say that you want to execute some logic in a `Typer` callback depending on the subcommand that is being called.
+
+You can get the name of the subcommand from the context:
+
+Check it:
+
+## Executable callback
+
+By default, the callback is only executed right before executing a command.
+
+And if no command is provided, the help message is shown.
+
+But we could make it run even without a subcommand with `invoke_without_command=True`:
+
+Check it:
+
+## Exclusive executable callback
+
+We might not want the callback to be executed if there's already other command that will be executed.
+
+For that, we can get the `typer.Context` and check if there's an invoked command in `ctx.invoked_subcommand`.
+
+If it's `None`, it means that we are not calling a subcommand but the main program (the callback) directly:
+
+Check it:
+
+## Configuring the context
+
+You can pass configurations for the context when creating a command or callback.
+
+For example, you could keep additional *CLI parameters* not declared in your CLI program with `ignore_unknown_options` and `allow_extra_args`.
+
+Then you can access those extra raw *CLI parameters* as a `list` of `str` in `ctx.args`:
+
+Tip:
+
+Notice that it saves all the extra *CLI parameters* as a raw `list` of `str`, including the *CLI option* names and values, everything together.

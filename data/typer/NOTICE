@@ -1,0 +1,3 @@
+Source: https://github.com/fastapi/typer (docs/tutorial), commit 00381d6.
+License: MIT, see LICENSE in this folder.
+Changes: code-include lines, console screenshots and admonition markers were stripped.
