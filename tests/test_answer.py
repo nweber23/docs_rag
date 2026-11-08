@@ -27,6 +27,14 @@ def test_answer_returns_sources() -> None:
     assert result.sources == ["geo.md"]
 
 
+def test_only_cited_sources_are_returned() -> None:
+    chunks = [Chunk("A", "a.md", 0.9), Chunk("B", "b.md", 0.8), Chunk("C", "c.md", 0.7)]
+    result = answer_question(
+        "q?", retrieve_fn=lambda _q, _k: chunks, chat_fn=lambda _s, _u: "Uses B [2] and C [3]."
+    )
+    assert result.sources == ["b.md", "c.md"]
+
+
 def test_no_relevant_chunks_skips_llm() -> None:
     def fail(_s: str, _u: str) -> str:
         raise AssertionError("LLM must not be called")

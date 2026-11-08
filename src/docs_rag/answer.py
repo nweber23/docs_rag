@@ -1,5 +1,6 @@
 """Build a grounded prompt, call the LLM, return answer plus sources."""
 
+import re
 from collections.abc import Callable
 from dataclasses import dataclass
 
@@ -45,5 +46,11 @@ def answer_question(
     reply = chat_fn(SYSTEM_PROMPT, build_prompt(question, relevant))
     if NO_ANSWER in reply:
         return Answer(NO_ANSWER, [])
-    sources = list(dict.fromkeys(c.source for c in relevant))  # unique, ordered
-    return Answer(reply, sources)
+    return Answer(reply, _cited_sources(reply, relevant))
+
+
+def _cited_sources(reply: str, chunks: list[Chunk]) -> list[str]:
+    """Sources of the passages the model cited as [n]; all passages if it cited none."""
+    cited = {int(n) for n in re.findall(r"\[(\d+)\]", reply)}
+    used = [c for i, c in enumerate(chunks, 1) if i in cited] or chunks
+    return list(dict.fromkeys(c.source for c in used))  # unique, ordered
