@@ -31,6 +31,7 @@ packages = ["src/docs_rag"]
 [tool.ruff]
 line-length = 100
 src = ["src", "tests", "scripts"]
+extend-exclude = ["data"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
